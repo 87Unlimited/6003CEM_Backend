@@ -1,0 +1,42 @@
+{
+  "files": {
+    "index.ts": [
+      {
+        "id": "fca49f8c-d5d8-4e46-9f6a-32c1c26adbc4",
+        "line": 11,
+        "version": 10,
+        "index": 270
+      },
+      {
+        "id": "de0b3f12-d13b-4564-acb5-65cf5ca8a67f",
+        "line": 12,
+        "version": 10,
+        "index": 287
+      },
+      {
+        "id": "a12c3856-a1a3-4d36-9ab0-524a47d8c035",
+        "line": 13,
+        "version": 10,
+        "index": 306
+      },
+      {
+        "id": "3efdbe66-1f1a-4536-ae9c-2ae04128586b",
+        "line": 14,
+        "version": 10,
+        "index": 338
+      },
+      {
+        "id": "6fd46e93-5835-4079-99da-38470d4ddbf4",
+        "line": 15,
+        "version": 10,
+        "index": 365
+      },
+      {
+        "id": "fd6e87f4-f7b5-4e95-9d6a-b52a81296b0e",
+        "line": 17,
+        "version": 10,
+        "index": 424
+      }
+    ]
+  }
+}
