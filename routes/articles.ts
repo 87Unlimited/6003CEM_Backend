@@ -162,67 +162,103 @@ const deleteArticle = async (ctx: RouterContext, next: any) => {
 // methods for like icon
 async function likesCount(ctx: RouterContext, next: any) {
   // For you TODO: add error handling and error response code
-  const id = ctx.params.id;
-  const result = await likes.count(id);
-  ctx.body = result ? result : 0;
+  try {
+    const id = ctx.params.id;
+    const result = await likes.count(id);
+    ctx.body = result ? result : 0;
+  } catch (error) {
+    console.error("Error in likesCount:", error);
+    ctx.status = 500; // Internal server error
+    ctx.body = { error: "Failed to retrieve likes count" };
+  }
   await next();
 }
 
 async function likePost(ctx: RouterContext, next: any) {
   // For you TODO: add error handling and error response code
-  const user = ctx.state.user;
-  const uid: number = user.user.id;
-  const id = parseInt(ctx.params.id);
-  const result: any = await likes.like(id, uid);
-  ctx.body = result.affectedRows
-    ? { message: "liked", userid: result.userid }
-    : { message: "error" };
+  try{
+    const user = ctx.state.user;
+    const uid: number = user.user.id;
+    const id = parseInt(ctx.params.id);
+    const result: any = await likes.like(id, uid);
+    ctx.body = result.affectedRows
+      ? { message: "liked", userid: result.userid }
+      : { message: "error" };
+  } catch (error) {
+    console.error("Error in likesCount:", error);
+    ctx.status = 500; // Internal server error
+    ctx.body = { error: "Failed to retrieve likes post" };
+  }
   await next();
 }
 
 async function dislikePost(ctx: RouterContext, next: any) {
   // For you TODO: add error handling and error response code
-  const user = ctx.state.user;
-  const uid: number = user.user.id;
-  const id = parseInt(ctx.params.id);
-  const result: any = await likes.dislike(id, uid);
-  ctx.body = result.affectedRows
-    ? { message: "disliked" }
-    : { message: "error" };
+  try{
+    const user = ctx.state.user;
+    const uid: number = user.user.id;
+    const id = parseInt(ctx.params.id);
+    const result: any = await likes.dislike(id, uid);
+    ctx.body = result.affectedRows
+      ? { message: "disliked" }
+      : { message: "error" };
+  } catch (error) {
+    console.error("Error in likesCount:", error);
+    ctx.status = 500; // Internal server error
+    ctx.body = { error: "Failed to dislike post" };
+  }
   await next();
 }
 
 //mehtods for Heart(Favorite) icon
 async function userFav(ctx: RouterContext, next: any) {
   // For you TODO: add error handling and error response code
-  const user = ctx.state.user;
-  const uid: number = user.user.id;
-  const result = await favs.listFav(uid);
-  ctx.body = result ? result : 0;
+  try{
+    const user = ctx.state.user;
+    const uid: number = user.user.id;
+    const result = await favs.listFav(uid);
+    ctx.body = result ? result : 0;
+  } catch (error) {
+    console.error("Error in likesCount:", error);
+    ctx.status = 500; // Internal server error
+    ctx.body = { error: "Failed to retrieve fav" };
+  }
   await next();
 }
 
 async function postFav(ctx: RouterContext, next: any) {
   // For you TODO: add error handling and error response code
-  const user = ctx.state.user;
-  const uid: number = user.user.id;
-  const id = parseInt(ctx.params.id);
-  const result: any = await favs.addFav(id, uid);
-  ctx.body = result.affectedRows
-    ? { message: "added", userid: result.userid }
-    : { message: "error" };
+  try{
+    const user = ctx.state.user;
+    const uid: number = user.user.id;
+    const id = parseInt(ctx.params.id);
+    const result: any = await favs.addFav(id, uid);
+    ctx.body = result.affectedRows
+      ? { message: "added", userid: result.userid }
+      : { message: "error" };
+  } catch (error) {
+    console.error("Error in likesCount:", error);
+    ctx.status = 500; // Internal server error
+    ctx.body = { error: "Failed to add fav" };
+  }
   await next();
 }
 
 async function rmFav(ctx: RouterContext, next: any) {
   // For you TODO: add error handling and error response code
-  const user = ctx.state.user;
-  const uid: number = user.user.id;
-  const id = parseInt(ctx.params.id);
-  const result: any = await favs.removeFav(id, uid);
-  ctx.body = result.affectedRows
-    ? { message: "removed" }
-    : { message: "error" };
+  try{
+    const user = ctx.state.user;
+    const uid: number = user.user.id;
+    const id = parseInt(ctx.params.id);
+    const result: any = await favs.removeFav(id, uid);
+    ctx.body = result.affectedRows
+      ? { message: "removed" }
+      : { message: "error" };
+  } catch (error) {
+    console.error("Error in likesCount:", error);
+    ctx.status = 500; // Internal server error
+    ctx.body = { error: "Failed to remove fav" };
+  }
   await next();
 }
 
